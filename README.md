@@ -202,6 +202,13 @@ view_all_zones:
   color_off: green
   show_on: bottom
 
+history:
+  hide_history: false
+  history_section_title: Activity
+  hide_history_section_icon: false
+  hide_history_section_name: false
+  max_items: 5
+
 automations:
   hide_automations: false
   automation_section_title: Automations
