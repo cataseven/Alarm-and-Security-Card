@@ -286,15 +286,15 @@ Override HA localized names.
 | `keypad_border_color`          | string        | null    | Border override         |
 | `keypad_width`                 | number        | null    | Width %                 |
 | `keypad_height`                | number/string | null    | Height px/vh/etc        |
-| `action_button_1`              | required      | varies  | Action button: 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_1`              | required      | varies  | Action button: `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
 | `action_button_1_name`         | string        | varies  | Button labels           |
-| `action_button_2`              | required      | varies  | Action button: 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_2`              | required      | varies  | Action button: `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
 | `action_button_2_name`         | string        | varies  | Button labels           |
-| `action_button_3`              | optional      | false   | Additional action button 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_3`              | optional      | false   | Additional action button `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
 | `action_button_3_name`         | string        | varies  | Button labels           |
-| `action_button_4`              | optional      | false   | Additional action button 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_4`              | optional      | false   | Additional action button `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
 | `action_button_4_name`         | string        | varies  | Button labels           |
-| `action_button_5`              | optional      | false   | Additional action button 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_5`              | optional      | false   | Additional action button `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
 | `action_button_5_name`         | string        | varies  | Button labels           |
 
 ### View: open_only
