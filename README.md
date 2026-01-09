@@ -344,29 +344,6 @@ Used for Section view dashboards.
 
 ---
 
-## Theming
-
-CSS variables for consistent visual theme:
-
-| Variable                             | Purpose                    |
-| ------------------------------------ | -------------------------- |
-| `--security-alarm-card-keypad-bg`    | Keypad background          |
-| `--security-alarm-card-keypad-color` | Keypad text color          |
-| `--security-alarm-card-section-bg`   | Zone/automation section bg |
-
-Example:
-
-```yaml
-frontend:
-  themes:
-    AlarmTheme:
-      security-alarm-card-keypad-bg: var(--ha-card-background)
-      security-alarm-card-section-bg: var(--ha-card-background)
-      security-alarm-card-keypad-color: var(--primary-text-color)
-```
-
----
-
 ## Alarm Integration
 
 ### Alarmo Mode
