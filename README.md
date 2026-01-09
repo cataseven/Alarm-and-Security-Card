@@ -27,6 +27,9 @@
 
 ![image4](images/keypad.png)
 
+* **History of activities**
+
+![image5](images/log.png)
 ---
 
 ## Features
