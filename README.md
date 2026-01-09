@@ -337,7 +337,7 @@ Override HA localized names.
 | `history_section_title`     | `Activity` | Title                       |
 | `hide_history_section_icon` | false         | Hide icon                   |
 | `hide_history_section_name` | false         | Hide name                   |
-| `max_items: 10,`          | 10         | Hide timestamps             |
+| `max_items: 10,`          | 10         | Limit count             |
 
 
 ### Automations
