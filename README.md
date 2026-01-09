@@ -234,6 +234,7 @@ grid_options:
 | `keypad`         | object | see below     | config                   | Keypad settings                  |
 | `view_open_only` | object | see below     | config                   | Settings for open_only view      |
 | `view_all_zones` | object | see below     | config                   | Settings for all_zones view      |
+| `history` | object | see below     | config                   | Settings for activity history      |
 | `automations`    | object | see below     | config                   | Automation panel                 |
 | `grid_options`   | object | `{}`          | HA section               | Optional layout for Section view |
 
@@ -320,6 +321,17 @@ Override HA localized names.
 | `color_on`               | null     | Badge color open    |
 | `color_off`              | null     | Badge color closed  |
 | `show_on`                | `bottom` | `bottom` or `right` |
+
+### History
+
+| Key                            | Default       | Description                 |
+| ------------------------------ | ------------- | --------------------------- |
+| `hide_history`             | false         | Hide block                  |
+| `history_section_title`     | `Activity` | Title                       |
+| `hide_history_section_icon` | false         | Hide icon                   |
+| `hide_history_section_name` | false         | Hide name                   |
+| `max_items: 10,`          | 10         | Hide timestamps             |
+
 
 ### Automations
 
