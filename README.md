@@ -26,11 +26,12 @@
 * **Hide Keypad and Show as Icon**
 
 ![image4](images/keypad.png)
+
 ---
 
 ## Features
 
-* Alarm control (Disarm / Arm Home / Arm Away / etc.)
+* Alarm control (Disarm / Arm Home / Arm Away / Night / Vacation / Custom Bypass)
 * Virtual numeric keypad
 * Optional Alarmo integration (with countdown)
 * Supports native `alarm_control_panel.*` alarms
@@ -64,6 +65,7 @@ Optional:
 ### HACS (Recommended)
 
 1. Go to **HACS**
+2. Add this repository as a custom frontend (if needed)
 3. Search and Install `Alarm and Security Card`
 4. Ensure resource is loaded:
 
@@ -110,6 +112,7 @@ title: Home
 type: custom:alarm-and-security-card
 entity: alarm_control_panel.alarm_home_alarm
 title: Home
+
 colors:
   disarm_active: darkgreen
   disarm_inactive: grey
@@ -122,6 +125,7 @@ colors:
   arming: orange
   pending: orange
   triggered: red
+
 name_mapping:
   disarm_button: Disarm
   disarmed: Disarmed
@@ -133,7 +137,8 @@ name_mapping:
   armed_custom_bypass: Armed (Bypass)
   arming: Arming Soon
   pending: Enter Code and Disarm
-  triggered: You fucking thief
+  triggered: Alarm Triggered
+
 zones:
   - entity: binary_sensor.alarm_zone_1
     name: Garage
@@ -159,8 +164,9 @@ zones:
   - entity: binary_sensor.alarm_zone_8
     name: Panic
     board_zone: 8
+
 keypad:
-  hide_keypad: false
+  hide_keypad_and_show_as_icon: false
   show_keypad_borders: true
   keypad_border_color: null
   keypad_width: 100
@@ -175,7 +181,9 @@ keypad:
   action_button_4_name: Vacation
   action_button_5: arm_custom_bypass
   action_button_5_name: Bypass
-zone_view: open_only # or all_zones
+
+zone_view: open_only
+
 view_open_only:
   zone_section_title: Zones
   hide_zone_section_icon: true
@@ -183,7 +191,7 @@ view_open_only:
   show_zone_numbers: true
   show_zone_name: false
   color: red
-  show_on: bottom # or right
+
 view_all_zones:
   zone_section_title: Zones
   hide_zone_section_icon: false
@@ -193,20 +201,168 @@ view_all_zones:
   color_on: red
   color_off: green
   show_on: bottom
+
 automations:
   hide_automations: false
   automation_section_title: Automations
   hide_automation_section_icon: false
   hide_automation_section_name: false
   hide_last_triggered: false
-  show_on: bottom
   automation_toggle_color: green
   automation_list:
     - automation.device_home_alarm
-# FOR SECTION VIEW DASHBOARD
+
 grid_options:
   columns: 18
   rows: auto
+```
+
+---
+
+## Configuration Reference
+
+### Top-level Options
+
+| Parameter        | Type   | Default       | Allowed values           | Description                      |
+| ---------------- | ------ | ------------- | ------------------------ | -------------------------------- |
+| `entity`         | string | required      | `alarm_control_panel.*`  | Alarm panel entity               |
+| `title`          | string | friendly name | any                      | Header title                     |
+| `zone_view`      | string | `open_only`   | `open_only`, `all_zones` | Zone render mode                 |
+| `colors`         | object | `{}`          | see below                | Custom state colors              |
+| `name_mapping`   | object | `{}`          | see below                | Custom state labels              |
+| `zones`          | list   | `[]`          | sensors                  | Zone definitions                 |
+| `keypad`         | object | see below     | config                   | Keypad settings                  |
+| `view_open_only` | object | see below     | config                   | Settings for open_only view      |
+| `view_all_zones` | object | see below     | config                   | Settings for all_zones view      |
+| `automations`    | object | see below     | config                   | Automation panel                 |
+| `grid_options`   | object | `{}`          | HA section               | Optional layout for Section view |
+
+### Colors
+
+| Key                   | Default | Description                     |
+| --------------------- | ------- | ------------------------------- |
+| `disarm_active`       | null    | Color when disarm button active |
+| `disarm_inactive`     | null    | Color when inactive             |
+| `arming`              | null    | Color of Arming state           |
+| `pending`             | null    | Color of Pending entry delay    |
+| `triggered`           | null    | Color of Triggered state        |
+| `armed_away`          | null    | Color of Armed away             |
+| `armed_stay`          | null    | Color of Armed stay/home        |
+| `armed_night`         | null    | Color of Armed night            |
+| `armed_vacation`      | null    | Color of Armed vacation         |
+| `armed_custom_bypass` | null    | Color of Armed w/ bypass        |
+
+### Name Mapping
+
+Override HA localized names.
+
+| Key                   | Description             |
+| --------------------- | ----------------------- |
+| `disarm_button`       | Label for Disarm button |
+| `disarmed`            | Label for this state    |
+| `arming`              | Label for this state    |
+| `pending`             | Label for this state    |
+| `triggered`           | Label for this state    |
+| `armed_away`          | Label for this state    |
+| `armed_stay`          | Label for this state    |
+| `armed_night`         | Label for this state    |
+| `armed_vacation`      | Label for this state    |
+| `armed_custom_bypass` | Label for this state    |
+
+### Zones
+
+| Key          | Type   | Default       | Description          |
+| ------------ | ------ | ------------- | -------------------- |
+| `entity`     | string | required      | `binary_sensor.*`    |
+| `name`       | string | friendly name | Display name         |
+| `board_zone` | number | index         | Physical zone number |
+
+### Keypad
+
+| Key                            | Type          | Default | Description             |
+| ------------------------------ | ------------- | ------- | ----------------------- |
+| `hide_keypad_and_show_as_icon` | bool          | false   | Hides keypad, shows FAB |
+| `show_keypad_borders`          | bool          | true    | Draw button borders     |
+| `keypad_border_color`          | string        | null    | Border override         |
+| `keypad_width`                 | number        | null    | Width %                 |
+| `keypad_height`                | number/string | null    | Height px/vh/etc        |
+| `action_button_1`              | required      | varies  | Action button: 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_1_name`         | string        | varies  | Button labels           |
+| `action_button_2`              | required      | varies  | Action button: 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_2_name`         | string        | varies  | Button labels           |
+| `action_button_3`              | optional      | false   | Additional action button 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_3_name`         | string        | varies  | Button labels           |
+| `action_button_4`              | optional      | false   | Additional action button 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_4_name`         | string        | varies  | Button labels           |
+| `action_button_5`              | optional      | false   | Additional action button 'arm_vacation', 'arm_away', 'arm_stay', 'arm_night','disarm'|
+| `action_button_5_name`         | string        | varies  | Button labels           |
+
+### View: open_only
+
+| Key                      | Default | Description          |
+| ------------------------ | ------- | -------------------- |
+| `zone_section_title`     | `Zones` | Header text          |
+| `hide_zone_section_icon` | false   | Hide icon            |
+| `hide_zone_section_name` | false   | Hide title           |
+| `show_zone_numbers`      | true    | Show zone numbers    |
+| `show_zone_name`         | true    | Show zone names      |
+| `color`                  | null    | Color for open slots |
+
+### View: all_zones
+
+| Key                      | Default  | Description         |
+| ------------------------ | -------- | ------------------- |
+| `zone_section_title`     | `Zones`  | Header text         |
+| `hide_zone_section_icon` | false    | Hide icon           |
+| `hide_zone_section_name` | false    | Hide title          |
+| `show_zone_numbers`      | true     | Show numbers        |
+| `show_zone_name`         | true     | Show names          |
+| `color_on`               | null     | Badge color open    |
+| `color_off`              | null     | Badge color closed  |
+| `show_on`                | `bottom` | `bottom` or `right` |
+
+### Automations
+
+| Key                            | Default       | Description                 |
+| ------------------------------ | ------------- | --------------------------- |
+| `hide_automations`             | false         | Hide block                  |
+| `automation_section_title`     | `Automations` | Title                       |
+| `hide_automation_section_icon` | false         | Hide icon                   |
+| `hide_automation_section_name` | false         | Hide name                   |
+| `hide_last_triggered`          | false         | Hide timestamps             |
+| `automation_toggle_color`      | null          | ON chip color               |
+| `automation_list`              | []            | List of automation entities |
+
+### Grid Options
+
+Used for Section view dashboards.
+
+| Key       | Type   | Description  |
+| --------- | ------ | ------------ |
+| `columns` | number | Column count |
+| `rows`    | string | e.g. `auto`  |
+
+---
+
+## Theming
+
+CSS variables for consistent visual theme:
+
+| Variable                             | Purpose                    |
+| ------------------------------------ | -------------------------- |
+| `--security-alarm-card-keypad-bg`    | Keypad background          |
+| `--security-alarm-card-keypad-color` | Keypad text color          |
+| `--security-alarm-card-section-bg`   | Zone/automation section bg |
+
+Example:
+
+```yaml
+frontend:
+  themes:
+    AlarmTheme:
+      security-alarm-card-keypad-bg: var(--ha-card-background)
+      security-alarm-card-section-bg: var(--ha-card-background)
+      security-alarm-card-keypad-color: var(--primary-text-color)
 ```
 
 ---
@@ -215,17 +371,17 @@ grid_options:
 
 ### Alarmo Mode
 
-If `alarmo` is detected in Home Assistant's services, the card switches to Alarmo control mode.
+If `alarmo` is detected in Home Assistant services, the card switches to Alarmo control mode.
 
 Mapping:
 
-| Button Key        | Alarmo Mode   |
-| ----------------- | ------------- |
-| arm_home          | home          |
-| arm_away          | away          |
-| arm_night         | night         |
-| arm_vacation      | vacation      |
-| arm_custom_bypass | custom_bypass |
+| Button Key          | Alarmo Mode     |
+| ------------------- | --------------- |
+| `arm_home`          | `home`          |
+| `arm_away`          | `away`          |
+| `arm_night`         | `night`         |
+| `arm_vacation`      | `vacation`      |
+| `arm_custom_bypass` | `custom_bypass` |
 
 Additional Behavior:
 
@@ -246,7 +402,6 @@ If Alarmo is not present, the card uses native `alarm_control_panel` services:
 This makes Alarmo optional.
 
 ---
-
 
 ## License
 
