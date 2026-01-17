@@ -11,6 +11,9 @@
 
 ## Screenshots
 
+* **UI Editor**
+![image6](images/ui.png)
+
 * **Show All Zones View**
 
 ![image1](images/list_all_zones.png)
@@ -222,9 +225,6 @@ automations:
   automation_list:
     - automation.device_home_alarm
 
-grid_options:
-  columns: 18
-  rows: auto
 ```
 
 ---
