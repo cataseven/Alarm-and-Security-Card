@@ -34,7 +34,7 @@
 
 ![image5](images/log.png)
 
-* **3D Keypad Option**
+* **3D Keypad Options (Soft, Strong and Inset**
 
 ![image6](images/3d.png)
 ---
