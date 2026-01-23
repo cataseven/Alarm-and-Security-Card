@@ -1,3 +1,7 @@
+<a href="https://www.buymeacoffee.com/cataseven" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height: 60px !important;width: 217px !important;" >
+</a>     
+
 # Alarm and Security Card
 
 [![HACS Badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
@@ -408,6 +412,10 @@ If Alarmo is not present, the card uses native `alarm_control_panel` services:
 This makes Alarmo optional.
 
 ---
+
+<a href="https://www.buymeacoffee.com/cataseven" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height: 60px !important;width: 217px !important;" >
+</a>     
 
 ## License
 
