@@ -33,6 +33,10 @@
 * **History of activities**
 
 ![image5](images/log.png)
+
+* **3D Keypad Option**
+
+![image6](images/3d.png)
 ---
 
 ## Features
@@ -214,6 +218,7 @@ history:
   hide_history_section_icon: false
   hide_history_section_name: false
   max_items: 5
+  show_on: bottom
 
 automations:
   hide_automations: false
@@ -297,6 +302,8 @@ Override HA localized names.
 | `keypad_border_color`          | string        | null    | Border override         |
 | `keypad_width`                 | number        | null    | Width %                 |
 | `keypad_height`                | number/string | null    | Height px/vh/etc        |
+| `enable_3d_effects`            | bool          | null    | 3D Keypad               |
+| `effect_variant`               | object        | soft    | `soft`, `strong`, `inset` |
 | `action_button_1`              | required      |   | Action button: `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
 | `action_button_1_name`         | string        |   | Button labels           |
 | `action_button_2`              | required      |   | Action button: `arm_vacation`, `arm_away`, `arm_stay`, `arm_night`,`disarm` etc.|
@@ -341,7 +348,7 @@ Override HA localized names.
 | `hide_history_section_icon` | false         | Hide icon                   |
 | `hide_history_section_name` | false         | Hide name                   |
 | `max_items: 10,`          | 10         | Limit count             |
-
+| `show_on`                | `bottom` | `bottom` or `right` |
 
 ### Automations
 
