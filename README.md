@@ -24,7 +24,7 @@
 
 * **On the Right Side**
 
-![image3](images/on_the_right.png)
+![image3](images/righty.png)
 
 * **Hide Keypad and Show as Icon**
 
