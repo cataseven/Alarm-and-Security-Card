@@ -9,7 +9,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Platform](https://img.shields.io/badge/platform-Home%20Assistant-41BDF5)
 
-> A customizable Lovelace security keypad + alarm panel for Home Assistant.
+> A customizable, Alarmo supported, Lovelace security keypad + alarm panel for Home Assistant.
 
 ---
 
