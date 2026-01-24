@@ -126,20 +126,18 @@ title: Home
 type: custom:alarm-and-security-card
 entity: alarm_control_panel.alarm_home_alarm
 title: Home
-
 colors:
   disarm_active: darkgreen
   disarm_inactive: grey
   disarming: orange
   armed_away: green
   armed_stay: blue
-  armed_night: darkblue
-  armed_vacation: darkblue
+  armed_night: blue
+  armed_vacation: blue
   armed_custom_bypass: yellow
   arming: orange
   pending: orange
   triggered: red
-
 name_mapping:
   disarm_button: Disarm
   disarmed: Disarmed
@@ -152,16 +150,15 @@ name_mapping:
   arming: Arming Soon
   pending: Enter Code and Disarm
   triggered: Alarm Triggered
-
 zones:
   - entity: binary_sensor.alarm_zone_1
-    name: Garage
+    name: Main Door
     board_zone: 1
   - entity: binary_sensor.alarm_zone_2
-    name: Main Door
+    name: Downstairs
     board_zone: 2
   - entity: binary_sensor.alarm_zone_3
-    name: Downstairs
+    name: Upstairs
     board_zone: 3
   - entity: binary_sensor.alarm_zone_4
     name: Upstairs
@@ -178,26 +175,25 @@ zones:
   - entity: binary_sensor.alarm_zone_8
     name: Panic
     board_zone: 8
-
 keypad:
   hide_keypad_and_show_as_icon: false
   show_keypad_borders: true
-  keypad_border_color: null
   keypad_width: 100
-  keypad_height: 300
-  action_button_1: arm_stay
-  action_button_1_name: Stay
+  keypad_height: 290
+  keypad_border_color: null
+  enable_3d_effects: true
+  effect_variant: soft
+  action_button_1: "false"
+  action_button_1_name: null
   action_button_2: arm_away
   action_button_2_name: Away
-  action_button_3: arm_night
-  action_button_3_name: Night
-  action_button_4: arm_vacation
-  action_button_4_name: Vacation
-  action_button_5: arm_custom_bypass
-  action_button_5_name: Bypass
-
+  action_button_3: false
+  action_button_3_name: null
+  action_button_4: false
+  action_button_4_name: null
+  action_button_5: false
+  action_button_5_name: null
 zone_view: open_only
-
 view_open_only:
   zone_section_title: Zones
   hide_zone_section_icon: true
@@ -205,7 +201,6 @@ view_open_only:
   show_zone_numbers: true
   show_zone_name: false
   color: red
-
 view_all_zones:
   zone_section_title: Zones
   hide_zone_section_icon: false
@@ -215,20 +210,18 @@ view_all_zones:
   color_on: red
   color_off: green
   show_on: bottom
-
 history:
   hide_history: false
   history_section_title: Activity
   hide_history_section_icon: false
   hide_history_section_name: false
-  max_items: 5
-  show_on: bottom
-
+  max_items: 4
+  hours_to_show: 6
 automations:
   hide_automations: false
   automation_section_title: Automations
-  hide_automation_section_icon: false
-  hide_automation_section_name: false
+  hide_automation_section_icon: true
+  hide_automation_section_name: true
   hide_last_triggered: false
   automation_toggle_color: green
   automation_list:
@@ -255,7 +248,6 @@ automations:
 | `view_all_zones` | object | see below     | config                   | Settings for all_zones view      |
 | `history` | object | see below     | config                   | Settings for activity history      |
 | `automations`    | object | see below     | config                   | Automation panel                 |
-| `grid_options`   | object | `{}`          | HA section               | Optional layout for Section view |
 
 ### Colors
 
@@ -351,7 +343,8 @@ Override HA localized names.
 | `history_section_title`     | `Activity` | Title                       |
 | `hide_history_section_icon` | false         | Hide icon                   |
 | `hide_history_section_name` | false         | Hide name                   |
-| `max_items: 10,`          | 10         | Limit count             |
+| `max_items: 10`          | 4         | Limit count             |
+| `hours_to_show:`          | 6         | Limit hours             |
 | `show_on`                | `bottom` | `bottom` or `right` |
 
 ### Automations
