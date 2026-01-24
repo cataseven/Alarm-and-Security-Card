@@ -216,6 +216,7 @@ history:
   hide_history_section_icon: false
   hide_history_section_name: false
   max_items: 4
+  list_height: 105px
   hours_to_show: 6
 automations:
   hide_automations: false
@@ -339,13 +340,14 @@ Override HA localized names.
 
 | Key                            | Default       | Description                 |
 | ------------------------------ | ------------- | --------------------------- |
-| `hide_history`             | false         | Hide block                  |
-| `history_section_title`     | `Activity` | Title                       |
-| `hide_history_section_icon` | false         | Hide icon                   |
-| `hide_history_section_name` | false         | Hide name                   |
-| `max_items: 10`          | 4         | Limit count             |
-| `hours_to_show:`          | 6         | Limit hours             |
-| `show_on`                | `bottom` | `bottom` or `right` |
+| `hide_history`                 | false         | Hide block                  |
+| `history_section_title`        | `Activity`    | Title                       |
+| `hide_history_section_icon`    | false         | Hide icon                   |
+| `hide_history_section_name`    | false         | Hide name                   |
+| `max_items: 10`                | 4             | Limit count                 |
+| `hours_to_show:`               | 6             | Limit hours                 |
+| `list_height`                  | 105px         | Only if show on is selected `bottom`|
+| `show_on`                      | `bottom`      | `bottom` or `right`         |
 
 ### Automations
 
