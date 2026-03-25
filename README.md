@@ -4,10 +4,14 @@
 
 # Alarm and Security Card
 
-[![HACS Badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
-![Maintenance](https://img.shields.io/maintenance/yes/2026)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Platform](https://img.shields.io/badge/platform-Home%20Assistant-41BDF5)
+![Downloads](https://img.shields.io/github/downloads/cataseven/Alarm-and-Security-Card/total?color=41BDF5&logo=home-assistant&label=Downloads&suffix=%20downloads&style=for-the-badge)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/frontend)
+[![GitHub Release](https://img.shields.io/github/release/cataseven/Alarm-and-Security-Card.svg)](https://github.com/cataseven/Alarm-and-Security-Card/releases)
+[![License](https://img.shields.io/github/license/cataseven/Alarm-and-Security-Card.svg)](LICENSE)
+![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0%2B-blue.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2026.svg)
+[![GitHub Stars](https://img.shields.io/github/stars/cataseven/Alarm-and-Security-Card?style=social)](https://github.com/cataseven/Alarm-and-Security-Card)
+[![GitHub Issues](https://img.shields.io/github/issues/cataseven/Alarm-and-Security-Card?style=flat-square)](https://github.com/cataseven/Alarm-and-Security-Card/issues)
 
 > A customizable, Alarmo supported, Lovelace security keypad + alarm panel for Home Assistant.
 
