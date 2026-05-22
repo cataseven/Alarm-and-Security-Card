@@ -338,6 +338,8 @@ Override HA localized names.
 | `show_zone_name`         | true     | Show names          |
 | `color_on`               | null     | Badge color open    |
 | `color_off`              | null     | Badge color closed  |
+| `text_color_on`          | null     | Text color open     |
+| `text_color_off`         | null     | Text color closed   |
 | `show_on`                | `bottom` | `bottom` or `right` |
 
 ### History
