@@ -58,7 +58,7 @@
   * `open_only` mode
   * `all_zones` mode
   * Bottom or Right placement
-* Automation toggles panel
+* Automation & `input_boolean` toggles panel
 * Customizable colors & labels
 * Works standalone (no Alarmo required)
 
@@ -74,7 +74,7 @@ Optional:
 
 * Alarmo
 * Binary sensors for zones
-* Automation entities for automation panel
+* Automation or `input_boolean` entities for the automation/toggles panel
 
 ---
 
@@ -231,6 +231,7 @@ automations:
   automation_toggle_color: green
   automation_list:
     - automation.device_home_alarm
+    - input_boolean.babysitter_mode
 
 ```
 
@@ -365,7 +366,9 @@ Override HA localized names.
 | `hide_automation_section_name` | false         | Hide name                   |
 | `hide_last_triggered`          | false         | Hide timestamps             |
 | `automation_toggle_color`      | null          | ON chip color               |
-| `automation_list`              | []            | List of automation entities |
+| `automation_list`              | []            | List of `automation.*` and/or `input_boolean.*` entities. The card toggles each via the entity's own `turn_on`/`turn_off` service. |
+
+> The Automations section also accepts `input_boolean` entities (e.g. `input_boolean.babysitter_mode`). The on/off chip toggles the entity the same way it toggles automations. `last_triggered` is only displayed for automation entities — `input_boolean`s don't have that attribute. If you mix entity types, rename the section via `automation_section_title` (e.g. "Toggles").
 
 ### Grid Options
 
