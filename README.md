@@ -130,6 +130,8 @@ title: Home
 type: custom:alarm-and-security-card
 entity: alarm_control_panel.alarm_home_alarm
 title: Home
+font_size: 1em
+keypad_font_size: 1em
 colors:
   disarm_active: darkgreen
   disarm_inactive: grey
@@ -245,6 +247,8 @@ automations:
 | ---------------- | ------ | ------------- | ------------------------ | -------------------------------- |
 | `entity`         | string | required      | `alarm_control_panel.*`  | Alarm panel entity               |
 | `title`          | string | friendly name | any                      | Header title                     |
+| `font_size`      | string | `1em`         | any CSS length           | Base text size for the whole card (titles, chips, labels, history). See [Font Sizes](#font-sizes--accessibility) |
+| `keypad_font_size` | string | `1em`       | any CSS length           | Text size of the keypad number buttons only. See [Font Sizes](#font-sizes--accessibility) |
 | `zone_view`      | string | `open_only`   | `open_only`, `all_zones` | Zone render mode                 |
 | `colors`         | object | `{}`          | see below                | Custom state colors              |
 | `name_mapping`   | object | `{}`          | see below                | Custom state labels              |
@@ -254,6 +258,39 @@ automations:
 | `view_all_zones` | object | see below     | config                   | Settings for all_zones view      |
 | `history` | object | see below     | config                   | Settings for activity history      |
 | `automations`    | object | see below     | config                   | Automation panel                 |
+
+### Font Sizes & Accessibility
+
+On large wall-mounted tablets and touchscreens the default text can be hard to
+read from a distance. Two top-level options let you scale the card without
+editing the source:
+
+| Key                | Default | Description                                                                 |
+| ------------------ | ------- | --------------------------------------------------------------------------- |
+| `font_size`        | `1em`   | Base text size for the whole card. Every label, title, chip, code display and history row scales relative to this. Accepts any CSS length (`1.5em`, `18px`, `120%`, …). |
+| `keypad_font_size` | `1em`   | Size of the keypad **number** buttons only. Lets you make the digits large for touch input without enlarging titles and labels. |
+
+Both default to `1em`, which preserves the card's original appearance.
+
+```yaml
+type: custom:alarm-and-security-card
+entity: alarm_control_panel.home_alarm
+font_size: 1.5em
+keypad_font_size: 5em
+```
+
+Notes:
+
+- `font_size` is applied to the card root, so all text scales together.
+- `keypad_font_size` only affects the number buttons. Action buttons (e.g. a
+  custom disarm label) keep the base `font_size` so a long label stays readable
+  instead of being blown up to digit size.
+- Both keys are also exposed in the visual (UI) editor.
+
+![font_size before/after](images/font_size_before_after.png)
+
+> Illustrative rendering from the card's stylesheet: **left** is the default
+> (`1em` / `1em`); **right** uses `font_size: 1.5em` and `keypad_font_size: 5em`.
 
 ### Colors
 
