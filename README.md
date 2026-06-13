@@ -132,6 +132,11 @@ entity: alarm_control_panel.alarm_home_alarm
 title: Home
 font_size: 1em
 keypad_font_size: 1em
+header_font_size: 1em
+action_button_font_size: 1em
+zone_font_size: 1em
+history_font_size: 1em
+automation_font_size: 1em
 colors:
   disarm_active: darkgreen
   disarm_inactive: grey
@@ -247,8 +252,13 @@ automations:
 | ---------------- | ------ | ------------- | ------------------------ | -------------------------------- |
 | `entity`         | string | required      | `alarm_control_panel.*`  | Alarm panel entity               |
 | `title`          | string | friendly name | any                      | Header title                     |
-| `font_size`      | string | `1em`         | any CSS length           | Base text size for the whole card (titles, chips, labels, history). See [Font Sizes](#font-sizes--accessibility) |
+| `font_size`      | string | `1em`         | any CSS length           | Base text size for the card body (keypad, sections). See [Font Sizes](#font-sizes--accessibility) |
 | `keypad_font_size` | string | `1em`       | any CSS length           | Text size of the keypad number buttons only. See [Font Sizes](#font-sizes--accessibility) |
+| `header_font_size` | string | `1em`       | any CSS length           | Title + status label size, independent of `font_size`. See [Font Sizes](#font-sizes--accessibility) |
+| `action_button_font_size` | string | `1em` | any CSS length         | Labeled keypad action buttons (e.g. disarm/arm labels). See [Font Sizes](#font-sizes--accessibility) |
+| `zone_font_size` | string | `1em`         | any CSS length           | Zones section text. See [Font Sizes](#font-sizes--accessibility) |
+| `history_font_size` | string | `1em`      | any CSS length           | History/activity section text. See [Font Sizes](#font-sizes--accessibility) |
+| `automation_font_size` | string | `1em`   | any CSS length           | Automations section text. See [Font Sizes](#font-sizes--accessibility) |
 | `zone_view`      | string | `open_only`   | `open_only`, `all_zones` | Zone render mode                 |
 | `colors`         | object | `{}`          | see below                | Custom state colors              |
 | `name_mapping`   | object | `{}`          | see below                | Custom state labels              |
@@ -262,35 +272,45 @@ automations:
 ### Font Sizes & Accessibility
 
 On large wall-mounted tablets and touchscreens the default text can be hard to
-read from a distance. Two top-level options let you scale the card without
-editing the source:
+read from a distance. Several top-level options let you scale each area of the
+card independently, without editing the source. All accept any CSS length
+(`1.5em`, `18px`, `120%`, …) and all default to `1em`, which preserves the
+card's original appearance.
 
-| Key                | Default | Description                                                                 |
-| ------------------ | ------- | --------------------------------------------------------------------------- |
-| `font_size`        | `1em`   | Base text size for the whole card. Every label, title, chip, code display and history row scales relative to this. Accepts any CSS length (`1.5em`, `18px`, `120%`, …). |
-| `keypad_font_size` | `1em`   | Size of the keypad **number** buttons only. Lets you make the digits large for touch input without enlarging titles and labels. |
-
-Both default to `1em`, which preserves the card's original appearance.
+| Key                       | Default | Description                                                                 |
+| ------------------------- | ------- | --------------------------------------------------------------------------- |
+| `font_size`               | `1em`   | Base size for the card **body** — keypad, zones, history and automations scale relative to this. |
+| `keypad_font_size`        | `1em`   | The keypad **number** buttons (0–9) only — make the digits large for touch input without enlarging anything else. |
+| `header_font_size`        | `1em`   | The header **title + status label**, independent of `font_size`. Keep the header modest while the body scales up. |
+| `action_button_font_size` | `1em`   | The **labeled** keypad action buttons (e.g. a custom disarm/arm/Swim label), separate from the number digits. |
+| `zone_font_size`          | `1em`   | The **zones** section (titles, rows, badges, slots). |
+| `history_font_size`       | `1em`   | The **history / activity** section. |
+| `automation_font_size`    | `1em`   | The **automations** section. |
 
 ```yaml
 type: custom:alarm-and-security-card
-entity: alarm_control_panel.home_alarm
-font_size: 1.5em
-keypad_font_size: 5em
+entity: alarm_control_panel.pool_alarm
+font_size: 1.2em            # body base
+keypad_font_size: 5em       # big digits for touch
+header_font_size: 1em       # keep the title + status readable, not huge
+action_button_font_size: 1.4em
+zone_font_size: 1.3em
+history_font_size: 1em
+automation_font_size: 1em
 ```
 
 Notes:
 
-- `font_size` is applied to the card root, so all text scales together.
-- `keypad_font_size` only affects the number buttons. Action buttons (e.g. a
-  custom disarm label) keep the base `font_size` so a long label stays readable
-  instead of being blown up to digit size.
-- Both keys are also exposed in the visual (UI) editor.
-
-![font_size before/after](images/font_size_before_after.png)
-
-> Illustrative rendering from the card's stylesheet: **left** is the default
-> (`1em` / `1em`); **right** uses `font_size: 1.5em` and `keypad_font_size: 5em`.
+- `header_font_size` is **independent** of `font_size`, so a large body/keypad
+  no longer forces the header to overflow. The title now stays on one line and
+  shrinks to fit, the status label wraps cleanly, and the header reflows instead
+  of truncating to `Title…`.
+- `keypad_font_size` affects only the number buttons; labeled action buttons use
+  `action_button_font_size` so a long label stays readable instead of being
+  blown up to digit size.
+- The section keys (`zone_/history_/automation_font_size`) ride on top of
+  `font_size`, so you can bump or trim one section without touching the others.
+- All keys are also exposed in the visual (UI) editor.
 
 ### Colors
 
